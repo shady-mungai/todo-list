@@ -1,15 +1,17 @@
 import React,{ useState } from "react";
 
-function TodoItem(){
-    const [todo ,setTodo] = useState({
+function TodoItem(props){
+ const [task,setTask] = useState(true)
 
-        "title":"Learn React",
-        "Description":"Introduction to React"
-})
+function handleClick(){
+
+   setTask(task =>!task) 
+}
     return (
-        <div>
-            <h2>{todo.title}</h2>
-            <p>{todo.Description}</p>
+        <div style={{border:"1px solid green"}}>
+            <h2>{props.todo.title}</h2>
+            <p>{props.todo.Description}</p>
+            <button onClick={handleClick}>{task ? "Completed":"Incomplete"}</button>
         </div>
     )
 }
