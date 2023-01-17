@@ -10,7 +10,7 @@ function handleClick(){
     return (
         <div style={{border:"1px solid green"}}>
             <h2>{props.todo.title}</h2>
-            <p>{props.todo.Description}</p>
+            <p>{props.todo.description}</p>
             <button onClick={handleClick}>{task ? "Completed":"Incomplete"}</button>
         </div>
     )

@@ -1,13 +1,17 @@
 import "./App.css";
+
 import UserInfo from "./Biodata";
+import TodoAnalytics from "./views/TodoAnalytics";
 import Home from "./views/home";
+import { Route, Routes } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App" >
-      <UserInfo/>   
-      <Home />
-    </div>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/analytics" element={<TodoAnalytics />} />
+      <Route path="/profile" element={<UserInfo />} />
+    </Routes>
   );
 }
 
