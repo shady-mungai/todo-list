@@ -1,0 +1,4 @@
+Tailwind css -> set it up
+             -> use tailwind classes
+
+Deploy a react application -> vercel/firebase(your own task)

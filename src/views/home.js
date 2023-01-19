@@ -2,6 +2,8 @@ import React, { useState, useEffect, useContext } from "react";
 import TodoList from "../components/Todolist";
 import axios from "axios";
 import { TodoContext } from "../context/TodoContext";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 function Home() {
 
@@ -50,6 +52,7 @@ function Home() {
 
   return (
     <div>
+      <Navbar />
       <h1>{newTodo}</h1>
       <form onSubmit={handleSubmit}>
         <input onChange={handleChange} name="newTodo" value={newTodo} type="text" placeholder="Enter new todo"/>
@@ -63,8 +66,8 @@ function Home() {
       ) : (
         <p>No tasks</p>
       )}
-      
-    </div>
+      <Footer />
+    </div>  
   );
 }
 
