@@ -7,7 +7,7 @@ function TodoList(props) {
 
   
   return (
-    <div>
+    <div className="w-1/2 mx-auto border-l-[1rem] border-blue-300">
 {    props.todos.map((item,index) => (
       <TodoItem key={index} todo={item}/>
   )) 

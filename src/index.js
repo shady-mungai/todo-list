@@ -4,13 +4,19 @@ import './index.css';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { TodoProvider } from './context/TodoContext';
+import { UserProvider } from './context/UserContext';
 
 // capturing the main entry point of the application 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <UserProvider>
+        <TodoProvider>
+          <App />
+        </TodoProvider>
+      </UserProvider>
     </BrowserRouter>
   </React.StrictMode>
 );

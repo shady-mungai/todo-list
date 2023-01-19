@@ -1,21 +1,34 @@
-import React, { useState } from "react";
-import TodoList from "../myComponent/Todolist";
+import React, { useState, useEffect, useContext } from "react";
+import TodoList from "../components/Todolist";
+import axios from "axios";
+import { TodoContext } from "../context/TodoContext";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 function Home() {
-  const [todos, setTodos] = useState([
-    {
-      id: 1,
-      title: "Learn React",
-      description: "Introduction to React",
-      status:false
-    },
-    {
-      id: 2,
-      title: "Learn React",
-      description: "Introduction to React",
-      status:false
-    },
-  ]);
+
+  const [todos, setTodos] = useContext(TodoContext)
+
+  // useEffect(() => {
+  //   fetchTodos()
+  // }, [])
+  
+  // function to fetch todos => GET => https://jsonplaceholder.typicode.com/todos
+  // const fetchTodos = () => {
+  //   axios.get(
+  //     // process.env("REACT_APP_API_URL")
+  //     "https://jsonplaceholder.typicode.com/todos"
+  //   ).then((response) => {
+  //     const fetchedTodos = response.data
+  //     // setTodos([
+  //     //   ...todos, fetchedTodos
+  //     // ])
+  //     setTodos(fetchedTodos)
+  //   }).catch((error) => {
+  //     console.log(error)
+  //   })
+  // }
+
 
   // new todo state
   const [newTodo,setNewTodo] = useState("")
@@ -39,14 +52,22 @@ function Home() {
 
   return (
     <div>
-
+      <Navbar />
       <h1>{newTodo}</h1>
       <form onSubmit={handleSubmit}>
         <input onChange={handleChange} name="newTodo" value={newTodo} type="text" placeholder="Enter new todo"/>
         <button type="submit">Submit todo</button>
       </form>
-      <TodoList todos={todos} />
-    </div>
+
+      {todos.length > 0 ? (
+        <>
+          <TodoList todos={todos} />
+        </>
+      ) : (
+        <p>No tasks</p>
+      )}
+      <Footer />
+    </div>  
   );
 }
 
